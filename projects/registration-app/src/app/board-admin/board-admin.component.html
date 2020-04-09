@@ -1,0 +1,51 @@
+<div class="container">
+    <header class="jumbotron">
+      <p>Admin Privilliages</p>
+
+    </header>
+ 
+
+    <!-- <div class="modal-header" style="background-color: #a3e8e8;" *ngFor="let x of content">
+      <h5 class="modal-title">{{x.id}}</h5>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="line-height: 3;">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div> -->
+
+
+
+    <table class="table">
+      <thead>
+      <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Delete User</th>
+    
+      </tr>
+    
+      </thead>
+      <tbody >
+      <tr *ngFor="let x of content">
+        <td>{{x.id}}</td>
+        <td>{{x.username}}</td>
+        <td>{{x.email}}</td>
+        <td> <button (click)="test(x)" type="button" class="close" data-dismiss="modal" aria-label="Close"  >
+          <span aria-hidden="true">&times;</span>
+        </button></td>
+       
+      </tr>
+      </tbody>
+
+      <tfoot>
+      <tr>
+        <td class="text-center" st-pagination="" st-items-by-page="10" colspan="4">
+        </td>
+      </tr>
+      </tfoot>
+    </table>	
+
+
+    
+  </div>
+  

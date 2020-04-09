@@ -2,5 +2,123 @@
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1, 
   "newProjectRoot": "projects",
-  "projects": {}
+  "projects": {
+    "registration-app": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "projects/registration-app",
+      "sourceRoot": "projects/registration-app/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/registration-app",
+            "index": "projects/registration-app/src/index.html",
+            "main": "projects/registration-app/src/main.ts",
+            "polyfills": "projects/registration-app/src/polyfills.ts",
+            "tsConfig": "projects/registration-app/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "projects/registration-app/src/favicon.ico",
+              "projects/registration-app/src/assets"
+            ],
+            "styles": [
+              "projects/registration-app/src/styles.css"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/registration-app/src/environments/environment.ts",
+                  "with": "projects/registration-app/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "registration-app:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "registration-app:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "registration-app:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/registration-app/src/test.ts",
+            "polyfills": "projects/registration-app/src/polyfills.ts",
+            "tsConfig": "projects/registration-app/tsconfig.spec.json",
+            "karmaConfig": "projects/registration-app/karma.conf.js",
+            "assets": [
+              "projects/registration-app/src/favicon.ico",
+              "projects/registration-app/src/assets"
+            ],
+            "styles": [
+              "projects/registration-app/src/styles.css"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/registration-app/tsconfig.app.json",
+              "projects/registration-app/tsconfig.spec.json",
+              "projects/registration-app/e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/registration-app/e2e/protractor.conf.js",
+            "devServerTarget": "registration-app:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "registration-app:serve:production"
+            }
+          }
+        }
+      }
+    }},
+  "defaultProject": "registration-app"
 }
