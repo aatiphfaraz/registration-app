@@ -11,7 +11,7 @@ export class RegisterComponent implements OnInit {
   isSuccessful = false;
   isSignUpFailed = false;
   errorMessage = '';
-  url=[];
+  url: string='';
   upload= false;
   selectedFile: File =null;
 
