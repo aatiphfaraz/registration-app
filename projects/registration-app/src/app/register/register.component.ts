@@ -54,7 +54,7 @@ export class RegisterComponent implements OnInit {
       reader.onload = (event) => { // called once readAsDataURL is completed
         
         console.log(typeof(event.target.result));
-        this.url = event.target.result;
+        // this.url = event.target.result;
         this.upload = true;
       }
     }
