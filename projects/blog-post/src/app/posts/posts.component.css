@@ -1,0 +1,14 @@
+.post {
+  text-align: center;
+  padding: 50px;
+}
+.list {
+  margin: auto;
+  width: 55%;
+  border: 3px;
+  padding: 10px;
+}
+.text {
+  text-align: center;
+  border: 3px solid rgb(98, 181, 202);
+}

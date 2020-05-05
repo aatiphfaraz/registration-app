@@ -1,19 +1,19 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { HomeComponent } from './home/home.component';
 import { BoardAdminComponent } from './board-admin/board-admin.component';
-
 import { authInterceptorProviders } from './_helpers/auth.interceptor';
-import { AuthGuard } from '../../auth.guard';
-import { SharedModule } from '../../shared/shared.module';
+import { AuthGuard } from './_services/auth.guard';
+import { LoginGuard } from './_services/login.guard';
+import { ToDoListModule } from './shared/to-do-list/to-do-list.module';
+import { ChatModule } from './shared/chat/chat.module';
+import { FindFriendComponent } from './find-friend/find-friend.component';
 
 @NgModule({
   declarations: [
@@ -21,17 +21,18 @@ import { SharedModule } from '../../shared/shared.module';
     LoginComponent,
     RegisterComponent,
     HomeComponent,
-    BoardAdminComponent
-    
+    BoardAdminComponent,
+    FindFriendComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    SharedModule
+    ToDoListModule,
+    ChatModule,
   ],
-  providers: [authInterceptorProviders, AuthGuard],
-  bootstrap: [AppComponent]
+  providers: [authInterceptorProviders, AuthGuard, LoginGuard],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

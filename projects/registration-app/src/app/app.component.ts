@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TokenStorageService } from './_services/token-storage.service';
-var bool;
- 
+let bool;
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -9,13 +9,17 @@ var bool;
 })
 
 export class AppComponent implements OnInit {
+
+  constructor(private tokenStorageService: TokenStorageService) { }
   private roles: string[];
   isLoggedIn = false;
   showAdminBoard = false;
   // showModeratorBoard = false;
   username: string;
- 
-  constructor(private tokenStorageService: TokenStorageService) { }
+
+  static showAdmin() {
+    return bool;
+  }
 
   ngOnInit() {
     this.isLoggedIn = !!this.tokenStorageService.getToken();
@@ -32,10 +36,6 @@ export class AppComponent implements OnInit {
   logout() {
     this.tokenStorageService.signOut();
     window.location.reload();
-  }
-
-  static showAdmin(){
-    return bool;
   }
 
 }

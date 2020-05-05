@@ -4,44 +4,35 @@ import { UserService } from '../_services/user.service';
 @Component({
   selector: 'app-board-admin',
   templateUrl: './board-admin.component.html',
-  styleUrls: ['./board-admin.component.css']
+  styleUrls: ['./board-admin.component.css'],
 })
 export class BoardAdminComponent implements OnInit {
   content = [];
-  
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService) {}
 
   ngOnInit() {
     this.userService.getAdminBoard().subscribe(
-      data => {
+      (data) => {
         this.content = JSON.parse(data);
-        
       },
-      err => {
+      (err) => {
         this.content = JSON.parse(err.error).message;
       }
     );
   }
 
-  test(i: object){
-    // this.userService.remUser()
-    // alert(this.content.indexOf(i));
-    let j = this.content[this.content.indexOf(i)].id;
+  test(i: object) {
+    const j = this.content[this.content.indexOf(i)].id;
     this.userService.remUser(j).subscribe(
-      data => {
+      (data) => {
         console.log(data);
-        this.content.splice(this.content.indexOf(i),1);
-       alert(data);
+        this.content.splice(this.content.indexOf(i), 1);
+        alert(data);
       },
-      err => {
+      (err) => {
         alert(err.error.message);
-        
       }
     );
-  
-    
-    // this.content.splice(this.content.indexOf(i),1);
-    //indexOf
   }
 }

@@ -5,7 +5,7 @@ import { TokenStorageService } from '../_services/token-storage.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
   form: any = {};
@@ -14,24 +14,27 @@ export class LoginComponent implements OnInit {
   errorMessage = '';
   roles: string[] = [];
   username: string;
-  url ='';
+  url = '';
 
-  constructor(private authService: AuthService, private tokenStorage: TokenStorageService) { }
+  constructor(
+    private authService: AuthService,
+    private tokenStorage: TokenStorageService
+  ) {}
 
   ngOnInit() {
     if (this.tokenStorage.getToken()) {
       this.isLoggedIn = true;
       this.roles = this.tokenStorage.getUser().roles;
-      this.username=this.tokenStorage.getUser().username;
-      if(this.tokenStorage.getUser().path!== null){
-      this.url = "http://localhost:8080"+this.tokenStorage.getUser().path;}
-      // console.log(this.tokenStorage.getUser());
+      this.username = this.tokenStorage.getUser().username;
+      if (this.tokenStorage.getUser().path !== null) {
+        this.url = 'http://localhost:8080' + this.tokenStorage.getUser().path;
+      }
     }
   }
 
   onSubmit() {
     this.authService.login(this.form).subscribe(
-      data => {
+      (data) => {
         this.tokenStorage.saveToken(data.accessToken);
         this.tokenStorage.saveUser(data);
 
@@ -39,9 +42,9 @@ export class LoginComponent implements OnInit {
         this.isLoggedIn = true;
         this.roles = this.tokenStorage.getUser().roles;
         this.reloadPage();
-        console.log("ggg");
+        console.log('ggg');
       },
-      err => {
+      (err) => {
         this.errorMessage = err.error.message;
         this.isLoginFailed = true;
       }
@@ -52,4 +55,3 @@ export class LoginComponent implements OnInit {
     window.location.reload();
   }
 }
-

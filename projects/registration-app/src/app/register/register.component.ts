@@ -11,9 +11,9 @@ export class RegisterComponent implements OnInit {
   isSuccessful = false;
   isSignUpFailed = false;
   errorMessage = '';
-  url: string='';
-  upload= false;
-  selectedFile: File =null;
+  url = '';
+  upload = false;
+  selectedFile: File = null;
 
   constructor(private authService: AuthService) { }
 
@@ -22,7 +22,7 @@ export class RegisterComponent implements OnInit {
 
   onSubmit() {
 
-  
+
     this.authService.register(this.form, this.selectedFile).subscribe(
       data => {
         console.log(data);
@@ -40,23 +40,23 @@ export class RegisterComponent implements OnInit {
   //   // this.http is the injected HttpClient
   //   const uploadData = new FormData();
   //   uploadData.append('myFile', this.selectedFile, this.selectedFile.name);
-  
+
   // }
 
 
   onSelectFile(event) {
     if (event.target.files && event.target.files[0]) {
-      var reader = new FileReader();
-      
+      const reader = new FileReader();
+
       reader.readAsDataURL(event.target.files[0]); // read file as data url
-      this.selectedFile= event.target.files[0];
-      
+      this.selectedFile = event.target.files[0];
+
       reader.onload = (event) => { // called once readAsDataURL is completed
-        
+
         console.log(typeof(event.target.result));
         // this.url = event.target.result;
         this.upload = true;
-      }
+      };
     }
   }
 

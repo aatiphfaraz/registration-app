@@ -1,6 +1,6 @@
 <div id="app">
   <nav class="navbar navbar-expand navbar-dark bg-dark">
-    <a  class="navbar-brand">Registration App</a>
+    <a class="navbar-brand">Social Sharing App</a>
     <ul class="navbar-nav mr-auto" routerLinkActive="active">
       <li class="nav-item">
         <a href="/home" class="nav-link" routerLink="home">Home </a>
@@ -8,7 +8,9 @@
       <li class="nav-item" *ngIf="showAdminBoard">
         <a href="/admin" class="nav-link" routerLink="admin">Admin Board</a>
       </li>
-   
+      <li class="nav-item" *ngIf="isLoggedIn">
+        <a href="/list" class="nav-link" routerLink="list">To Do list</a>
+      </li>
     </ul>
 
     <ul class="navbar-nav ml-auto" *ngIf="!isLoggedIn">
@@ -22,7 +24,17 @@
 
     <ul class="navbar-nav ml-auto" *ngIf="isLoggedIn">
       <li class="nav-item">
-        <a href="/login" class="nav-link" >{{ username[0].toUpperCase() +  username.slice(1) }}</a>
+        <a href="/findFriend" class="nav-link" routerLink="findFriend"
+          >Find Friends</a
+        >
+      </li>
+      <li class="nav-item">
+        <a href="/chat" class="nav-link" routerLink="chat">Chat</a>
+      </li>
+      <li class="nav-item">
+        <a href="/login" class="nav-link">{{
+          username[0].toUpperCase() + username.slice(1)
+        }}</a>
       </li>
       <li class="nav-item">
         <a href class="nav-link" (click)="logout()">LogOut</a>

@@ -1,0 +1,82 @@
+<form
+  name="form"
+  (ngSubmit)="f.form.valid && onSubmit()"
+  #f="ngForm"
+  novalidate
+  class="post"
+>
+  <div class="form-group">
+    <label for="textField"><strong>Title</strong></label>
+
+    <input
+      type="text"
+      [(ngModel)]="title"
+      name="Title"
+      class="form-control"
+      id="textField"
+      required
+    />
+  </div>
+
+  <div class="form-group">
+    <label for="textArea"><strong>Content</strong></label>
+
+    <textarea
+      [(ngModel)]="content"
+      name="content"
+      class="form-control"
+      id="textArea"
+      rows="3"
+      required
+    ></textarea>
+  </div>
+  <button class="btn btn-primary btn-block" type="submit">
+    Add
+  </button>
+</form>
+
+<div *ngFor="let post of posts" class="list">
+  <form class="form-inline">
+    <div class="form-group mx-sm-3 mb-2">
+      <input
+        *ngIf="!post.edittable"
+        class="form-control text"
+        readonly
+        value="{{ post.title }}"
+      />
+      <input
+        *ngIf="post.edittable"
+        class="form-control text"
+        value="{{ post.title }}"
+        [(ngModel)]="editTitle"
+        name="editTitle"
+      />
+      <input
+        *ngIf="!post.edittable"
+        class="form-control text"
+        readonly
+        value="{{ post.content }}"
+      />
+      <input
+        *ngIf="post.edittable"
+        class="form-control text"
+        value="{{ post.content }}"
+        [(ngModel)]="edit"
+        name="edit"
+      />
+    </div>
+    <button
+      *ngIf="post.edittable"
+      class="btn btn-primary mb-2"
+      (click)="updatePost(post.id, title, content)"
+    >
+      Update
+    </button>
+    <button class="btn btn-primary mb-2" (click)="editPost(post.id)">
+      Edit
+    </button>
+    <button (click)="remPost(post.id)" class="btn btn-primary mb-2">
+      Delete
+    </button>
+  </form>
+</div>
