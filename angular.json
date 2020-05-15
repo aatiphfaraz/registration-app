@@ -1,39 +1,37 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
-  "version": 1, 
+  "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "registration-app": {
+    "social-sharing-app": {
       "projectType": "application",
       "schematics": {},
-      "root": "projects/registration-app",
-      "sourceRoot": "projects/registration-app/src",
+      "root": "projects/social-sharing-app",
+      "sourceRoot": "projects/social-sharing-app/src",
       "prefix": "app",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/registration-app",
-            "index": "projects/registration-app/src/index.html",
-            "main": "projects/registration-app/src/main.ts",
-            "polyfills": "projects/registration-app/src/polyfills.ts",
-            "tsConfig": "projects/registration-app/tsconfig.app.json",
+            "outputPath": "dist/social-sharing-app",
+            "index": "projects/social-sharing-app/src/index.html",
+            "main": "projects/social-sharing-app/src/main.ts",
+            "polyfills": "projects/social-sharing-app/src/polyfills.ts",
+            "tsConfig": "projects/social-sharing-app/tsconfig.app.json",
             "aot": true,
             "assets": [
-              "projects/registration-app/src/favicon.ico",
-              "projects/registration-app/src/assets"
+              "projects/social-sharing-app/src/favicon.ico",
+              "projects/social-sharing-app/src/assets"
             ],
-            "styles": [
-              "projects/registration-app/src/styles.css"
-            ],
+            "styles": ["projects/social-sharing-app/src/styles.css"],
             "scripts": []
           },
           "configurations": {
             "production": {
               "fileReplacements": [
                 {
-                  "replace": "projects/registration-app/src/environments/environment.ts",
-                  "with": "projects/registration-app/src/environments/environment.prod.ts"
+                  "replace": "projects/social-sharing-app/src/environments/environment.ts",
+                  "with": "projects/social-sharing-app/src/environments/environment.prod.ts"
                 }
               ],
               "optimization": true,
@@ -62,34 +60,32 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "registration-app:build"
+            "browserTarget": "social-sharing-app:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "registration-app:build:production"
+              "browserTarget": "social-sharing-app:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "registration-app:build"
+            "browserTarget": "social-sharing-app:build"
           }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "projects/registration-app/src/test.ts",
-            "polyfills": "projects/registration-app/src/polyfills.ts",
-            "tsConfig": "projects/registration-app/tsconfig.spec.json",
-            "karmaConfig": "projects/registration-app/karma.conf.js",
+            "main": "projects/social-sharing-app/src/test.ts",
+            "polyfills": "projects/social-sharing-app/src/polyfills.ts",
+            "tsConfig": "projects/social-sharing-app/tsconfig.spec.json",
+            "karmaConfig": "projects/social-sharing-app/karma.conf.js",
             "assets": [
-              "projects/registration-app/src/favicon.ico",
-              "projects/registration-app/src/assets"
+              "projects/social-sharing-app/src/favicon.ico",
+              "projects/social-sharing-app/src/assets"
             ],
-            "styles": [
-              "projects/registration-app/src/styles.css"
-            ],
+            "styles": ["projects/social-sharing-app/src/styles.css"],
             "scripts": []
           }
         },
@@ -97,24 +93,22 @@
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
             "tsConfig": [
-              "projects/registration-app/tsconfig.app.json",
-              "projects/registration-app/tsconfig.spec.json",
-              "projects/registration-app/e2e/tsconfig.json"
+              "projects/social-sharing-app/tsconfig.app.json",
+              "projects/social-sharing-app/tsconfig.spec.json",
+              "projects/social-sharing-app/e2e/tsconfig.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         },
         "e2e": {
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
-            "protractorConfig": "projects/registration-app/e2e/protractor.conf.js",
-            "devServerTarget": "registration-app:serve"
+            "protractorConfig": "projects/social-sharing-app/e2e/protractor.conf.js",
+            "devServerTarget": "social-sharing-app:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "registration-app:serve:production"
+              "devServerTarget": "social-sharing-app:serve:production"
             }
           }
         }
@@ -140,9 +134,7 @@
               "projects/angular-testing/src/favicon.ico",
               "projects/angular-testing/src/assets"
             ],
-            "styles": [
-              "projects/angular-testing/src/styles.css"
-            ],
+            "styles": ["projects/angular-testing/src/styles.css"],
             "scripts": []
           },
           "configurations": {
@@ -204,9 +196,7 @@
               "projects/angular-testing/src/favicon.ico",
               "projects/angular-testing/src/assets"
             ],
-            "styles": [
-              "projects/angular-testing/src/styles.css"
-            ],
+            "styles": ["projects/angular-testing/src/styles.css"],
             "scripts": []
           }
         },
@@ -218,9 +208,7 @@
               "projects/angular-testing/tsconfig.spec.json",
               "projects/angular-testing/e2e/tsconfig.json"
             ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         },
         "e2e": {
@@ -236,6 +224,7 @@
           }
         }
       }
-    }},
-  "defaultProject": "registration-app"
+    }
+  },
+  "defaultProject": "social-sharing-app"
 }

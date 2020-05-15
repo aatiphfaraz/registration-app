@@ -1,0 +1,16 @@
+.box {
+  text-align: center;
+  background-color: #343a40;
+  border-radius: 40px;
+  color: aliceblue;
+  margin-bottom: 15px;
+  width: 300px;
+}
+.profile {
+  text-align: center;
+}
+img {
+  border-radius: 1.3rem;
+  margin: 5px;
+  height: 300px;
+}

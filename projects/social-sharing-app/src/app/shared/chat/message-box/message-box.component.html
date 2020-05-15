@@ -1,0 +1,80 @@
+<link
+  href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+  rel="stylesheet"
+  id="bootstrap-css"
+/>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<div #scrollMe class="msg_history">
+  <div *ngFor="let msg of user.sequence">
+    <div class="incoming_msg" *ngIf="msg.in">
+      <div class="incoming_msg_img">
+        <img src="https://ptetutorials.com/images/user-profile.png" />
+      </div>
+
+      <div class="received_msg">
+        <div class="received_withd_msg">
+          <p>{{ msg.in }}</p>
+
+          <span class="time_date"> {{ msg.date | date: 'medium' }}</span>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="msg.from_user_id">
+      <div class="incoming_msg" *ngIf="msg.from_user_id != fromUser">
+        <div class="incoming_msg_img">
+          <img src="https://ptetutorials.com/images/user-profile.png" />
+        </div>
+
+        <div class="received_msg">
+          <div class="received_withd_msg">
+            <p>{{ msg.message }}</p>
+
+            <span class="time_date"> {{ msg.createdAt | date: 'medium' }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="outgoing_msg" *ngIf="msg.out">
+      <div class="sent_msg">
+        <p>{{ msg.out }}</p>
+
+        <span class="time_date"> {{ msg.date | date: 'medium' }}</span>
+      </div>
+    </div>
+
+    <div class="outgoing_msg" *ngIf="msg.from_user_id == fromUser">
+      <div class="sent_msg">
+        <p>{{ msg.message }}</p>
+
+        <span class="time_date"> {{ msg.createdAt | date: 'medium' }}</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div>
+  <em>{{ feedback }}</em>
+</div>
+
+<div class="type_msg">
+  <div class="input_msg_write">
+    <input
+      type="text"
+      class="write_msg"
+      name="message"
+      placeholder="Type a message"
+      [(ngModel)]="message"
+      (keypress)="typingEvent()"
+    />
+    <button class="msg_send_btn" type="button" (click)="sendMessage()">
+      <i class="fa fa-paper-plane-o" aria-hidden="true"></i>
+    </button>
+    <div *ngFor="let x of user.sequence">
+      <p></p>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,66 @@
+<label for="query">Enter Name</label>
+
+<input type="text" name="query" [(ngModel)]="query" (input)="search()" />
+
+<table class="table">
+  <thead>
+    <h3>Follow Users</h3>
+    <tr>
+      <th>Name</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of users">
+      <td>{{ user.username }}</td>
+      <td>
+        <button class="btn btn-primary" (click)="followUser(user.id)">
+          Follow
+        </button>
+      </td>
+    </tr>
+  </tbody>
+
+  <tfoot>
+    <tr>
+      <td
+        class="text-center"
+        st-pagination=""
+        st-items-by-page="10"
+        colspan="4"
+      ></td>
+    </tr>
+  </tfoot>
+</table>
+
+<table class="table">
+  <thead>
+    <h3>Unfollow Users</h3>
+    <tr>
+      <th>Name</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of following">
+      <td>{{ user.username }}</td>
+
+      <td>
+        <button class="btn btn-primary" (click)="unfollowUser(user.id)">
+          Unollow
+        </button>
+      </td>
+    </tr>
+  </tbody>
+
+  <tfoot>
+    <tr>
+      <td
+        class="text-center"
+        st-pagination=""
+        st-items-by-page="10"
+        colspan="4"
+      ></td>
+    </tr>
+  </tfoot>
+</table>
